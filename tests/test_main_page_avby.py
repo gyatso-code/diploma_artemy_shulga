@@ -80,24 +80,24 @@ def test_footers_main(web_browser):
                  'https://av.by/privacy_policy'),
                 ]
 
-    # elements_app = [
-    #             (page.btn_menu_footer_mobile_app, 'мобильные приложения', 'https://av.by/pages/app'),
-    #             (page.btn_menu_footer_android, 'Приложение для Android', 'https://play.google.com/store/apps/details?id='
-    #                                                              'by.av.client&utm_source=av_by&utm_medium=footer&'
-    #                                                              'utm_campaign=playmarket_icon'),
-    #             (page.btn_menu_footer_apple, 'Приложение для iPhone', 'https://itunes.apple.com/by/app/av-by'
-    #                                                           '-продажа-автомобилей/id1020154366?mt=8'),
-    #             (page.btn_menu_footer_huawei, 'Приложение для Huawei', 'https://appgallery.huawei.com/'
-    #                                                                    '#/app/C101652541'),
-    #             (page.btn_menu_footer_youtube, 'YouTube', 'https://www.youtube.com/c/etoavby'),
-    #             (page.btn_menu_footer_instagram, 'Instagram', 'https://www.instagram.com/insta_avby/'),
-    #             (page.btn_menu_footer_telegram, 'Telegram', 'https://t.me/avbynews'),
-    #             (page.btn_menu_footer_tiktok, 'TikTok', 'https://www.tiktok.com/@av.by'),
-    #             (page.btn_menu_footer_vk, 'ВКонтакте', 'https://vk.com/newsavby'),
-    #             (page.btn_menu_footer_facebook, 'Facebook', 'https://www.facebook.com/belarus.auto'),
-    #             (page.btn_menu_footer_twitter, 'Twitter', 'https://twitter.com/avby_bel'),
-    #             (page.btn_menu_footer_classmates, 'Одноклассники', 'https://ok.ru/av.by')
-    #             ]
+    elements_app = [
+                (page.btn_menu_footer_mobile_app, 'мобильные приложения', 'https://av.by/pages/app'),
+                (page.btn_menu_footer_android, 'Приложение для Android', 'https://play.google.com/store/apps/details?id='
+                                                                 'by.av.client&utm_source=av_by&utm_medium=footer&'
+                                                                 'utm_campaign=playmarket_icon'),
+                (page.btn_menu_footer_apple, 'Приложение для iPhone', 'https://itunes.apple.com/by/app/av-by'
+                                                              '-продажа-автомобилей/id1020154366?mt=8'),
+                (page.btn_menu_footer_huawei, 'Приложение для Huawei', 'https://appgallery.huawei.com/'
+                                                                       '#/app/C101652541'),
+                (page.btn_menu_footer_youtube, 'YouTube', 'https://www.youtube.com/c/etoavby'),
+                (page.btn_menu_footer_instagram, 'Instagram', 'https://www.instagram.com/insta_avby/'),
+                (page.btn_menu_footer_telegram, 'Telegram', 'https://t.me/avbynews'),
+                (page.btn_menu_footer_tiktok, 'TikTok', 'https://www.tiktok.com/@av.by'),
+                (page.btn_menu_footer_vk, 'ВКонтакте', 'https://vk.com/newsavby'),
+                (page.btn_menu_footer_facebook, 'Facebook', 'https://www.facebook.com/belarus.auto'),
+                (page.btn_menu_footer_twitter, 'Twitter', 'https://twitter.com/avby_bel'),
+                (page.btn_menu_footer_classmates, 'Одноклассники', 'https://ok.ru/av.by')
+                ]
 
     for element, text_element, url_elements in elements:
         with allure.step('Тест проверки правильного URL при переходе'):
@@ -114,6 +114,21 @@ def test_footers_main(web_browser):
         with allure.step("Тест проверки на правильный адрес кнопки"):
             check.equal(element.get_attribute('href'), url_elements)
 
+    for element, text_element, url_elements in elements_app:
+        with allure.step("Тест проверки правильного URL при переходе"):
+            element.click()
+            page.switch_to_window(0)
+            time.sleep(1)
+            check.equal(page.get_current_url(), url_elements)
+
+        with allure.step("Проверка на наличие на экране элементов"):
+            check.is_true(element.is_visible())
+
+        with allure.step("Проверка орфографии"):
+            check.equal(element.get_text(), text_element)
+
+        with allure.step("Тест проверки на правильный адрес кнопки"):
+            check.equal(element.get_attribute('href'), url_elements)
 
 
 
