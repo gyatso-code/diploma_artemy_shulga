@@ -172,7 +172,7 @@ def test_register_phone(web_browser):
         time.sleep(5)
 
     with allure.step("Тест проверки -- на отображение текста 'Подтверждение номера телефона'"):
-        page.text_passes_phone.is_visible()
+        check.is_true(page.text_passes_phone.is_visible())
         time.sleep(1)
 
 
@@ -237,7 +237,7 @@ def test_register_email(web_browser):
     time.sleep(1)
 
     with allure.step("Тест проверки -- на отображение текста 'Подтверждение почтового адреса'"):
-        page.text_passes_email.is_visible()
+        check.is_true(page.text_passes_email.is_visible())
 
 
 
