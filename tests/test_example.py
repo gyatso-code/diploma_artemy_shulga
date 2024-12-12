@@ -2,7 +2,7 @@ import time
 
 import allure
 import pytest_check as check
-from locators.locators_main_page_avby import MainPage
+from locators.locators_header_page_avby import MainPage
 
 
 @allure.story('Тест для проверки главной страницы')
