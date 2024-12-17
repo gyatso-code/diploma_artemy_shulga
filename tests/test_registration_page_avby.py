@@ -11,7 +11,7 @@ from conftest import web_browser
 @allure.story('Тест для проверки главной страницы')
 @allure.feature('Тест для проверки страницу входа по номеру телефона')
 def test_enter_phone(web_browser):
-    """Этот тест проверяет страницу входа"""
+    """ Этот тест проверяет страницу входа по номеру телефона -- кликабельность, орфографию, вход пользователя """
 
     page = RegistrationPage(web_browser)
 
@@ -73,6 +73,7 @@ def test_enter_phone(web_browser):
 @allure.story('Тест для проверки главной страницы')
 @allure.feature('Тест для проверки страницу входа по электронной почте')
 def test_enter_email_or_login(web_browser):
+    """ Этот тест проверяет страницу входа по электронной почте -- кликабельность, орфографию, вход пользователя """
 
     page = RegistrationPage(web_browser)
 
@@ -124,6 +125,7 @@ def test_enter_email_or_login(web_browser):
 @allure.story('Тест для проверки главной страницы')
 @allure.feature('Тест для проверки страницы регистрации по телефону')
 def test_register_phone(web_browser):
+    """ Этот тест проверяет страницу регистрации по номеру телефона -- кликабельность, орфографию, подтверждение """
 
     page = RegistrationPage(web_browser)
 
@@ -185,6 +187,7 @@ def generate_random_email(domain="gmail.com", length=8):
 @allure.story('Тест для проверки главной страницы')
 @allure.feature('Тест для проверки страницы регистрации по электронной почте')
 def test_register_email(web_browser):
+    """ Этот тест проверяет страницу регистрации по электронной почте -- кликабельность, орфографию, подтверждение """
 
     page = RegistrationPage(web_browser)
 
