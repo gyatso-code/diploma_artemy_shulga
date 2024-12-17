@@ -10,8 +10,8 @@ from conftest import web_browser
 @allure.story('Тест для проверки главной страницы')
 @allure.feature('Тест для проверки главной страницы -- картинки')
 def test_main_img(web_browser):
-    """ Этот тест проверяет количество картинок на главной странице """
+
     page = MainPageElements(web_browser)
 
-    with allure.step("Тест проверки -- количество картинок на главной страницы"):
+    with allure.step("Тест проверки -- на количество картинок в главной страницы"):
         check.equal(page.img_info.count(), 7)

@@ -8,7 +8,7 @@ from conftest import web_browser
 @allure.story('Тест главной страницы "av.by"')
 @allure.feature('Проверка хедера')
 def test_headers_main(web_browser):
-    """Этот тест проверяет кликабельность, наличие элементов, провописание """
+    """Этот тест проверяет кликабельность, наличие элементов, правописание """
 
     page = HeaderPage(web_browser)
 
@@ -36,6 +36,5 @@ def test_headers_main(web_browser):
 
         with allure.step("Тест проверки на правильный адрес кнопки"):
             check.equal(element.get_attribute('href'), url_elements)
-
 
 

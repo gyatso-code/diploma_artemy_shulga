@@ -60,7 +60,7 @@ def test_enter_phone(web_browser):
         page.input_phone_and_email.send_keys('298593261')
 
     with allure.step("Тест проверки -- ввод в поле 'Пароль'"):
-        page.input_password.send_keys('qaartemijtester1110')
+        page.input_password.send_keys('')
 
     with allure.step("Тест проверки -- нажатие на кнопку 'Войти"):
         page.btn_enter.click()
@@ -112,7 +112,7 @@ def test_enter_email_or_login(web_browser):
         page.input_phone_and_email.send_keys('art.pointqa@gmail.com')
 
     with allure.step("Тест проверки -- ввод в поле 'Пароль'"):
-        page.input_password.send_keys('qaartemijtester1110')
+        page.input_password.send_keys('')
 
     with allure.step("Тест проверки -- нажатие на кнопку 'Войти"):
         page.btn_enter.click()
