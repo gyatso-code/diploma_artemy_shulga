@@ -241,11 +241,3 @@ def test_register_email(web_browser):
 
     with allure.step("Тест проверки -- на отображение текста 'Подтверждение почтового адреса'"):
         check.is_true(page.text_passes_email.is_visible())
-
-
-
-
-
-
-
-
