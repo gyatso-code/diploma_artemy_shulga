@@ -1,0 +1,137 @@
+/* === DESKTOP FIRST === */
+
+/* xl <= Extra extra large (xxl) */
+@media (max-width : 1400px) {
+	html{
+        font-size: 55%;
+    }
+	.showcase__content {
+		max-width: 1200px;
+		margin: auto;
+	}
+
+}
+
+/* lg <= Extra large (xl) */
+@media (max-width : 1200px) {
+	.showcase-carousel__item p{
+		font-size: 65px;
+	}
+	.showcase-navigation__next::before{
+		font-size: 35px;
+	}
+}
+
+/* md <= Large (lg) */
+@media (max-width : 992px) {
+	.showcase-carousel__item{
+		height: calc(50vh - var(--padding)*2);
+		/* opacity: 0.4; */
+	}
+	.showcase-carousel__item p{
+		bottom: -140px;
+		font-size: 50px;
+	}
+	.showcase-navigation > *::before{
+		font-size: 30px;
+	}
+}
+
+/* sm <= Medium (md) */
+@media (max-width : 768px) {
+	/* .showcase-carousel__item{
+		/* opacity: 0.6; */
+	.showcase-carousel__item p{
+		font-size: 40px;
+		bottom: -120px;
+	}
+	.showcase-navigation > * {
+		display: none;
+	}
+
+}
+
+/* xs <= Small (sm) */
+@media (max-width : 576px) {
+	.showcase-carousel__item{
+		height: calc(40vh - var(--padding)*2);
+		/* opacity: 0.7; */
+	}
+	.showcase-carousel__item p {
+		font-size: 30px;
+		bottom: -100px;
+	}
+	.showcase-navigation {
+		display: none;
+	}
+}
+
+
+/* === MOBILE FIRST === */
+
+/* Custom (xs) */
+@media (min-width : 0) {
+	.text{
+		font-size: 14px;
+	}
+}
+
+/* Small (sm) */
+@media (min-width : 576px) {
+	.showcase-carousel__item {
+        height: 200px; /* Фиксированная высота */
+    }
+	.text{
+		font-size: 16px;
+	}
+}
+
+/* Medium (md) */
+@media (min-width : 768px) {
+	.text{
+		font-size: 18px;
+	}
+}
+
+/* Large (lg) */
+@media (min-width : 992px) {
+	.text{
+		font-size: 20px;
+	}
+}
+
+/* Extra large (xl) */
+@media (min-width : 1200px) {
+	.text {
+		font-size: 22px;
+	}
+}
+
+/* Extra extra large (xxl) */
+@media (min-width : 1400px) {
+	.text {
+		font-size: 24px;
+	}
+}
+
+@media (max-width: 430px) {
+	.text {
+	  font-size: 12px;
+	}
+}
+
+@media (max-width: 393px) {
+	/* body {
+		margin: 0;
+	  } */
+	.text {
+		font-size: 12px; /* Уменьши размер шрифта */
+	  }
+  }
+  
+@media (orientation: landscape) {
+    .showcase-carousel__item {
+        transition: none; /* Убери плавные переходы для отладки */
+    }
+}
+
