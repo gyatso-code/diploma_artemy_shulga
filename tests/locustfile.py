@@ -1,41 +1,35 @@
 from locust import HttpUser, SequentialTaskSet, task, between
+import urllib3
 
 
-class User1(HttpUser):
-    @task
-    def mainPage(self):
-        self.client.get("/")
-
-
-# Класс, определяющий пользователя
-class User2(HttpUser):
-
-    # Набор задач, выполняемых последовательно
+class User(HttpUser):
     @task
     class SequenceOfTasks(SequentialTaskSet):
-        # Время ожидания между задачами от 1 до 5 секунд
-        wait_time = between(1, 5)
 
-        # Задача для посещения главной страницы и получения записей
+        urllib3.disable_warnings()
+
+        # wait_time = between(1, 5)
+
         @task
         def mainPage(self):
             self.client.get("/")
-            self.client.get("https://api.demoblaze.com/entries")
-
-        # Задача для выполнения входа
-        @task
-        def ссылкаPage(self):
-            self.client.get("ссылка", verify=False)
-
-        # Задача для выбора продукта
-        @task
-        def ссылкаPage(self):
-            self.client.get("ссылка", verify=False)
-        @task
-        def ссылкаPage(self):
-            self.client.get("ссылка", verify=False)
 
         @task
-        def ссылкаPage(self):
-            self.client.get("ссылка", verify=False)
+        def vinPage(self):
+            self.client.get("/vin", verify=False)
+
+        @task
+        def newsPage(self):
+            self.client.get("/news", verify=False)
+        @task
+        def companyPage(self):
+            self.client.get("/company", verify=False)
+
+        @task
+        def pagesPage(self):
+            self.client.get("https://av.by/pages/info", verify=False)
+
+        @task
+        def carsPage(self):
+            self.client.get("https://cars.av.by/", verify=False)
 

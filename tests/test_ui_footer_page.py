@@ -2,14 +2,14 @@ import time
 
 import allure
 import pytest_check as check
-from locators.locators_footer_avby import FooterPage
+from locators.locators_footer_page import FooterPage
 from conftest import web_browser
 
 
 @allure.story('Тест главной страницы "av.by"')
-@allure.feature('Проверка футера вкладки')
+@allure.feature('Проверка футера')
 def test_footers_main(web_browser):
-    """Этот тест проверяет кликабельность, наличие элементов, провописание """
+    """ Этот тест проверяет кликабельность элементов футера, их наличие и корректность переходов по ссылкам """
 
     page = FooterPage(web_browser)
 
@@ -44,63 +44,41 @@ def test_footers_main(web_browser):
                 (page.btn_menu_footer_users_agreement, 'Пользовательское соглашение',
                  'https://av.by/pages/user_agreement'),
                 (page.btn_menu_footer_personal_data, 'Правила обработки персональных данных',
-                 'https://av.by/privacy_policy'),
-                ]
+                 'https://av.by/privacy_policy')]
+
+
+    elements_app = [(page.btn_menu_footer_youtube, 'YouTube', 'https://www.youtube.com/c/etoavby'),
+                    (page.btn_menu_footer_instagram, 'Instagram', 'https://www.instagram.com/insta_avby/'),
+                    (page.btn_menu_footer_telegram, 'Telegram', 'https://t.me/avbynews'),
+                    (page.btn_menu_footer_tiktok, 'TikTok', 'https://www.tiktok.com/@av.by'),
+                    (page.btn_menu_footer_vk, 'ВКонтакте', 'https://vk.com/newsavby'),
+                    (page.btn_menu_footer_facebook, 'Facebook', 'https://www.facebook.com/belarus.auto'),
+                    (page.btn_menu_footer_twitter, 'Twitter', 'https://twitter.com/avby_bel'),
+                    (page.btn_menu_footer_classmates, 'Одноклассники', 'https://ok.ru/av.by')]
+
+    page.btn_passed_cookie.click()
+    time.sleep(3)
 
     for element, text_element, url_elements in elements:
-        with allure.step("Тест проверки -- правильного URL при переходе"):
+        with allure.step(f"Проверка элемента футера: {text_element}"):
             element.click()
             time.sleep(5)
-            check.equal(page.get_current_url(), url_elements)
-
-        with allure.step("Проверка на наличие на экране элементов"):
-            check.is_true(element.is_visible())
-
-        with allure.step("Проверка орфографии"):
-            check.equal(element.get_text(), text_element)
-
-        with allure.step("Тест проверки на правильный адрес кнопки"):
-            check.equal(element.get_attribute('href'), url_elements)
-
-
-@allure.story('Тест главной страницы "av.by"')
-@allure.feature('Проверка футера вкладки')
-def test_footers_main(web_browser):
-    """Этот тест проверяет кликабельность, наличие элементов, провописание """
-
-    page = FooterPage(web_browser)
-
-    elements_app = [
-                (page.btn_menu_footer_mobile_app, 'мобильные приложения', 'https://av.by/pages/app'),
-                # (page.btn_menu_footer_android, 'Приложение для Android', 'https://play.google.com/store/apps/details?id=by.av.client&utm_source=av_by&utm_medium=footer&utm_campaign=playmarket_icon'),
-                # (page.btn_menu_footer_apple, 'Приложение для iPhone', 'https://itunes.apple.com/by/app/av-by-продажа-автомобилей/id1020154366?mt=8'),
-                # (page.btn_menu_footer_huawei, 'Приложение для Huawei', 'https://appgallery.huawei.com/'
-                #                                                        '#/app/C101652541'),
-                (page.btn_menu_footer_youtube, 'YouTube', 'https://www.youtube.com/c/etoavby'),
-                (page.btn_menu_footer_instagram, 'Instagram', 'https://www.instagram.com/insta_avby/'),
-                (page.btn_menu_footer_telegram, 'Telegram', 'https://t.me/avbynews'),
-                (page.btn_menu_footer_tiktok, 'TikTok', 'https://www.tiktok.com/@av.by'),
-                # (page.btn_menu_footer_vk, 'ВКонтакте', 'https://vk.com/newsavby'),
-                (page.btn_menu_footer_facebook, 'Facebook', 'https://www.facebook.com/belarus.auto'),
-                (page.btn_menu_footer_twitter, 'Twitter', 'https://twitter.com/avby_bel'),
-                (page.btn_menu_footer_classmates, 'Одноклассники', 'https://ok.ru/av.by')
-                ]
+            check.equal(page.get_current_url(), url_elements, "URL не совпадает")
+            check.is_true(element.is_clickable(), "Элемент не кликабелен")
+            check.is_true(element.is_visible(), "Элемент не виден")
+            check.equal(element.get_text(), text_element, "Текст элемента некорректен")
+            check.equal(element.get_attribute('href'), url_elements, "Ссылка некорректна")
 
     switch_to_window_app = 1
-    for element, text_element, url_elements in elements_app:
-        with allure.step("Тест проверки правильного URL при переходе"):
-            element.click()
+    for element_app, text_app, url_app in elements_app:
+        with allure.step(f"Проверка соц.сети футера: {text_app}"):
+            check.is_true(element_app.is_clickable(), "Кнопка не кликабельна")
+            check.is_true(element_app.is_visible(), "Соц.сеть не видна")
+            check.equal(element_app.get_text(), text_app, "Текст кнопки некорректен")
+            check.equal(element_app.get_attribute('href'), url_app, "Ссылка некорректна")
+            element_app.click()
             page.switch_to_window(switch_to_window_app)
             time.sleep(3)
-            check.equal(page.get_current_url(), url_elements)
+            check.equal(page.get_current_url(), url_app, "URL не совпадает")
             page.switch_to_window(0)
         switch_to_window_app += 1
-
-        with allure.step("Проверка на наличие на экране элементов"):
-            check.is_true(element.is_visible())
-
-        with allure.step("Проверка орфографии"):
-            check.equal(element.get_text(), text_element)
-
-        with allure.step("Тест проверки на правильный адрес кнопки"):
-            check.equal(element.get_attribute('href'), url_elements)

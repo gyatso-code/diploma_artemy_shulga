@@ -13,6 +13,8 @@ class RegistrationPage(WebPage):
 
         super().__init__(web_driver, url)
 
+    # Принятие cookie
+    btn_passed_cookie = WebElement(xpath='//button[@class="button button--primary button--block button--large"]')
 
     # Кнопка войти на главной странице
     btn_enter_in = WebElement(xpath='(//a[@class="nav__link"])[7]')
