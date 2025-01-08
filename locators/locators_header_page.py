@@ -13,6 +13,9 @@ class HeaderPage(WebPage):
 
         super().__init__(web_driver, url)
 
+    # Принятие cookie
+    btn_passed_cookie = WebElement(xpath='//button[@class="button button--primary button--block button--large"]')
+
     # Объявления
     btn_menu_header_announcement = WebElement(xpath='(//a[@class="nav__link"])[1]')
 

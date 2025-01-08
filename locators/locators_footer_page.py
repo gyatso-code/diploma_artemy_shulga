@@ -13,6 +13,9 @@ class FooterPage(WebPage):
 
         super().__init__(web_driver, url)
 
+    # Принятие cookie
+    btn_passed_cookie = WebElement(xpath='//button[@class="button button--primary button--block button--large"]')
+
     # Мобильные приложения
     btn_menu_footer_mobile_app = WebElement(xpath="//div[@class='footer__app-text']//a[@target='_blank']")
 
