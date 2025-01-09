@@ -15,7 +15,6 @@ class MainPageElements(WebPage):
 
 
     # Принятие cookie
-
     btn_passed_cookie = WebElement(xpath='//button[@class="button button--primary button--block button--large"]')
 
     # Логотип av.by YouTube
